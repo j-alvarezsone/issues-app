@@ -1,8 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useIssuesStore } from '../../../stores/issues';
+import { storeToRefs } from 'pinia';
+
+const IssuesStore = useIssuesStore();
+
+const { state } = storeToRefs(IssuesStore);
+</script>
 
 <template>
   <q-btn-toggle
-    v-model="model"
+    v-model="state"
     push
     spread
     toggle-color="primary"
