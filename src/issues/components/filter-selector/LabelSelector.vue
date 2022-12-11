@@ -1,13 +1,29 @@
 <script setup lang="ts">
 import LoaderSpinner from '../../../shared/components/LoaderSpinner.vue';
+import useLabels from '../../composables/useLabels';
+const { isLoading, data } = useLabels();
 </script>
 
 <template>
-  <LoaderSpinner :show-text="false" size="50px" :thickness="1" />
+  <div class="q-mt-md">
+    <LoaderSpinner
+      v-if="isLoading"
+      :show-text="false"
+      size="50px"
+      :thickness="1"
+    />
 
-  <q-chip v-for="label in 10" :key="label" color="primary" outline clickable>
-    Some name
-  </q-chip>
+    <q-chip
+      v-else
+      v-for="label in data"
+      :key="label.id"
+      :style="{ color: `#${label.color}` }"
+      outline
+      clickable
+    >
+      {{ label.name }}
+    </q-chip>
+  </div>
 </template>
 
 <style scoped></style>
