@@ -13,7 +13,11 @@ export const useIssuesStore = defineStore('issues', () => {
 
     // Actions
     toggleLabel(labelName: string) {
-      throw new Error('Not implemented');
+      if (labels.value.includes(labelName)) {
+        labels.value = labels.value.filter((label) => label !== labelName);
+        return;
+      }
+      labels.value.push(labelName);
     },
   };
 });
