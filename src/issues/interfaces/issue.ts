@@ -1,6 +1,7 @@
 import { Label } from './label';
 
 export interface Issue {
+  [x: string]: any;
   url: string;
   repository_url: string;
   labels_url: string;
