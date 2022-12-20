@@ -9,12 +9,14 @@ interface Props {
 }
 const props = defineProps<Props>();
 
-const { preFetchIssue } = useIssue(props.issue.number, { autoLoad: false });
+const { setIssueCacheData } = useIssue(props.issue.number, {
+  autoLoad: false,
+});
 </script>
 
 <template>
   <q-card
-    @mouseenter="preFetchIssue(props.issue.number)"
+    @mouseenter="setIssueCacheData(props.issue)"
     class="text-black col-12 q-mb-md"
     flat
     bordered

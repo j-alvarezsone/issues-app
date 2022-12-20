@@ -55,6 +55,10 @@ const useIssue = (issueNumber: number, options?: Options) => {
     );
   };
 
+  const setIssueCacheData = (issue: Issue) => {
+    queryClient.setQueryData(['issue', issue.number], issue);
+  };
+
   return {
     //  State
     issue,
@@ -64,6 +68,7 @@ const useIssue = (issueNumber: number, options?: Options) => {
     // Getters
     // Actions
     preFetchIssue,
+    setIssueCacheData,
   };
 };
 
