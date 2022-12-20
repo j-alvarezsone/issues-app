@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/vue-query';
 import { Issue, State } from '../interfaces/issue';
 import { githubApi } from '../../api/githubApi';
-import { useIssuesStore } from '../../stores/issues';
-import { storeToRefs } from 'pinia';
+
+import useStore from './useStore';
 
 const getIssues = async (labels: string[], state: State): Promise<Issue[]> => {
   const params = new URLSearchParams();
@@ -23,7 +23,7 @@ const getIssues = async (labels: string[], state: State): Promise<Issue[]> => {
 };
 
 const useIssues = () => {
-  const { labels, state } = storeToRefs(useIssuesStore());
+  const { labels, state } = useStore();
 
   const { isLoading, data } = useQuery({
     // eslint-disable-next-line @tanstack/query/exhaustive-deps
