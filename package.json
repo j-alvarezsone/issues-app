@@ -15,8 +15,10 @@
     "@tanstack/vue-query": "^4.19.1",
     "@types/axios": "^0.14.0",
     "@types/dotenv": "^8.2.0",
+    "@vavt/md-editor-extension": "^1.4.0",
     "axios": "^1.2.1",
     "dotenv": "^16.0.3",
+    "md-editor-v3": "^2.6.0",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",
     "@tanstack/eslint-plugin-query": "^4.15.1",
+    "@types/marked": "^4.0.8",
     "@types/node": "^12.20.21",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",

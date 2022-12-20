@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import MdEditor from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
 
 const isOpen = ref<boolean>(true);
 const title = ref<string>('');
@@ -9,7 +11,7 @@ const labels = ref<string[]>([]);
 
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-dialog v-model="isOpen" position="bottom">
+    <q-dialog v-model="isOpen" position="bottom" persistent>
       <q-card style="width: 500px">
         <q-form>
           <q-linear-progress :value="1" color="primary" />
@@ -46,6 +48,11 @@ const labels = ref<string[]>([]);
               />
 
               <!-- Markdown editor -->
+              <md-editor
+                v-model="body"
+                placeholder="# Markdown"
+                language="en-US"
+              />
             </div>
           </q-card-section>
 

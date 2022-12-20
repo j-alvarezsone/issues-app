@@ -253,6 +253,11 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
+"@types/marked@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-4.0.8.tgz#b316887ab3499d0a8f4c70b7bd8508f92d477955"
+  integrity sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==
+
 "@types/mime@*":
   version "3.0.1"
   resolved "https://registry.npmjs.org/@types/mime/-/mime-3.0.1.tgz"
@@ -373,6 +378,11 @@
   dependencies:
     "@typescript-eslint/types" "5.46.0"
     eslint-visitor-keys "^3.3.0"
+
+"@vavt/md-editor-extension@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@vavt/md-editor-extension/-/md-editor-extension-1.4.0.tgz#89c8aa25f73b7b73fe833523784aad4eea4a909e"
+  integrity sha512-PdTqrMPvATk31vF4ipxgGqXXi+kFd+lXlDsHdc+mS+DOCycd5EHSjcTm10evE1I7xSkk7yuIq8AcfYh/ukPIjA==
 
 "@vitejs/plugin-vue@^2.2.0":
   version "2.3.4"
@@ -2131,6 +2141,11 @@ markdown-it@^12.3.0:
     linkify-it "^3.0.1"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
+
+md-editor-v3@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/md-editor-v3/-/md-editor-v3-2.6.0.tgz#a1e9c8ec6bd13d2a0d7ab848ece4372bf03201f7"
+  integrity sha512-BW1TyQg4kwQauZBl1ulfWZhsZKWIpDQj8lpQBC0N9hGkp9UCed71LLfyFKVuILZJKhTkeJcCDZsfOoKRcgskJQ==
 
 mdurl@^1.0.1:
   version "1.0.1"
