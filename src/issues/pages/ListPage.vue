@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LoaderSpinner from '../../shared/components/LoaderSpinner.vue';
 import FloatingButtons from '../components/FloatingButtons.vue';
+import NewIssueDialog from '../components/NewIssueDialog.vue';
 import FilterSelector from '../components/filter-selector/FilterSelector.vue';
 import IssueList from '../components/issues-list/IssueList.vue';
 import useIssues from '../composables/useIssues';
@@ -40,6 +41,8 @@ const test = () => {
       },
     ]"
   />
+  <!-- Dialog of new issue -->
+  <NewIssueDialog />
 </template>
 
 <style scoped></style>
