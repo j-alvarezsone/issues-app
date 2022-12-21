@@ -1,12 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-const isOpen = ref<boolean>(true);
+interface Props {
+  isOpen: boolean;
+  labels: string[];
+}
+
+interface Emits {
+  (e: 'onClose'): void;
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
+
+const isOpen = ref<boolean>(false);
 const title = ref<string>('');
 const body = ref<string>('');
 const labels = ref<string[]>([]);
+
+watch(
+  () => props.isOpen,
+  (value) => {
+    isOpen.value = value;
+  }
+);
 </script>
 
 <template>
@@ -42,7 +61,7 @@ const labels = ref<string[]>([]);
                 dense
                 multiple
                 use-chips
-                :options="[]"
+                :options="props.labels"
                 stack-label
                 class="q-mb-sm"
               />
@@ -62,7 +81,7 @@ const labels = ref<string[]>([]);
               color="primary"
               flat
               v-close-popup
-              @click="isOpen = false"
+              @click="emit('onClose')"
             />
             <q-space />
             <q-btn

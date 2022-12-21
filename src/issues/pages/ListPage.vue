@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import LoaderSpinner from '../../shared/components/LoaderSpinner.vue';
 import FloatingButtons from '../components/FloatingButtons.vue';
 import NewIssueDialog from '../components/NewIssueDialog.vue';
 import FilterSelector from '../components/filter-selector/FilterSelector.vue';
 import IssueList from '../components/issues-list/IssueList.vue';
 import useIssues from '../composables/useIssues';
+import useLabels from '../composables/useLabels';
 
 const { isLoading, data } = useIssues();
+const { data: labels } = useLabels();
 
-const test = () => {
-  console.log('test');
+const isOpen = ref<boolean>(false);
+
+const openDialog = () => {
+  isOpen.value = true;
 };
 </script>
 
@@ -37,12 +42,17 @@ const test = () => {
         icon: 'add',
         color: 'primary',
         size: 'lg',
-        action: () => test(),
+        action: openDialog,
       },
     ]"
   />
   <!-- Dialog of new issue -->
-  <NewIssueDialog />
+  <NewIssueDialog
+    v-if="labels"
+    :is-open="isOpen"
+    :labels="labels.map((label) => label.name)"
+    @on-close="isOpen = false"
+  />
 </template>
 
 <style scoped></style>
