@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import useIssueMutation from '../composables/useIssueMutration';
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
@@ -14,6 +15,8 @@ interface Emits {
 
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
+
+const { mutate, isLoading } = useIssueMutation();
 
 const isOpen = ref<boolean>(false);
 const title = ref<string>('');
@@ -32,7 +35,7 @@ watch(
   <div class="q-pa-md q-gutter-sm">
     <q-dialog v-model="isOpen" position="bottom" persistent>
       <q-card style="width: 500px">
-        <q-form>
+        <q-form @submit="mutate({ title, body, labels })">
           <q-linear-progress :value="1" color="primary" />
 
           <q-card-section class="column no-wrap">
@@ -78,6 +81,7 @@ watch(
 
           <q-card-actions align="left">
             <q-btn
+              :disabled="isLoading"
               label="Cancel"
               color="primary"
               flat
@@ -85,7 +89,13 @@ watch(
               @click="emit('onClose')"
             />
             <q-space />
-            <q-btn type="submit" label="Add Issue" color="dark" flat />
+            <q-btn
+              :disabled="isLoading"
+              type="submit"
+              label="Add Issue"
+              color="dark"
+              flat
+            />
           </q-card-actions>
         </q-form>
       </q-card>
