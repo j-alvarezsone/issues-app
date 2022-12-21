@@ -51,6 +51,7 @@ watch(
                 filled
                 dense
                 class="q-mb-sm"
+                :rules="[(val) => !!val || 'Field is required']"
               />
 
               <q-select
@@ -84,13 +85,7 @@ watch(
               @click="emit('onClose')"
             />
             <q-space />
-            <q-btn
-              type="submit"
-              label="Add Issue"
-              color="dark"
-              flat
-              v-close-popup
-            />
+            <q-btn type="submit" label="Add Issue" color="dark" flat />
           </q-card-actions>
         </q-form>
       </q-card>
