@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/vue-query';
+import { useMutation, useQueryClient } from '@tanstack/vue-query';
 import { Issue } from '../interfaces/issue';
 import { githubApi } from '../../api/githubApi';
 
@@ -25,9 +25,22 @@ const addIssue = async ({
 };
 
 const useIssueMutation = () => {
-  const { data, isLoading, mutate } = useMutation(addIssue, {
-    onSuccess: () => {
+  const queryClient = useQueryClient();
+
+  const { data, isLoading, mutate, isSuccess, reset } = useMutation(addIssue, {
+    onSuccess: (issue) => {
       // When is successful, we can do something here
+      queryClient.invalidateQueries({
+        queryKey: ['issues'],
+        exact: false,
+      });
+
+      queryClient.refetchQueries({
+        queryKey: ['issues'],
+        exact: false,
+      });
+
+      queryClient.setQueryData(['issue', issue.number], issue);
     },
     onSettled: () => {
       // When finish with success or error, we can do something here
@@ -37,9 +50,11 @@ const useIssueMutation = () => {
     //  State
     data,
     isLoading,
+    isSuccess,
     // Getters
     // Actions
     mutate,
+    reset,
   };
 };
 

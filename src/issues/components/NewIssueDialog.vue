@@ -16,7 +16,7 @@ interface Emits {
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
-const { mutate, isLoading } = useIssueMutation();
+const { mutate, isLoading, isSuccess, reset } = useIssueMutation();
 
 const isOpen = ref<boolean>(false);
 const title = ref<string>('');
@@ -27,6 +27,20 @@ watch(
   () => props.isOpen,
   (value) => {
     isOpen.value = value;
+  }
+);
+
+watch(
+  () => isSuccess.value,
+  (isSuccess) => {
+    if (isSuccess) {
+      title.value = '';
+      body.value = '';
+      labels.value = [];
+
+      reset();
+      emit('onClose');
+    }
   }
 );
 </script>

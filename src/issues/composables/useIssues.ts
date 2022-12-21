@@ -7,13 +7,13 @@ import useStore from './useStore';
 const getIssues = async (labels: string[], state: State): Promise<Issue[]> => {
   const params = new URLSearchParams();
 
-  params.append('per_page', '10');
-
   if (state) params.append('state', state);
   if (labels.length) {
     const labelsString = labels.join(',');
     params.append('labels', labelsString);
   }
+
+  params.append('per_page', '10');
 
   const { data } = await githubApi.get<Issue[]>('/issues', {
     params,

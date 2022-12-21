@@ -27,7 +27,6 @@ const openDialog = () => {
 
   <div class="row">
     <div class="col-xs-12 col-md-4">
-      <!-- TODO Filter -->
       <FilterSelector />
     </div>
     <div class="col-xs-12 col-md-8">
@@ -35,7 +34,6 @@ const openDialog = () => {
       <IssueList v-else :issues="data || []" />
     </div>
   </div>
-  <!-- FloatingButtons -->
   <FloatingButtons
     :buttons="[
       {
